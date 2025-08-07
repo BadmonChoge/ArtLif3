@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | ArtLife</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #DAA520;
+      --primary-light: #FFC72C;
+      --secondary: #44B78B;
+      --secondary-dark: #2F8F61;
+      --dark: #1C1C1E;
+      --darker: #2A2A2D;
+      --light: #FFFFFF;
+      --text-light: rgba(255, 255, 255, 0.87);
+    }
+
+    .contact-section {
+      padding: 3rem 1.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .contact-intro {
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .contact-method {
+      background-color: var(--darker);
+      padding: 1.5rem;
+      border-left: 4px solid var(--primary);
+      border-radius: 6px;
+    }
+
+    .contact-method h3 {
+      margin-top: 0;
+      color: var(--primary-light);
+    }
+
+    .contact-method a {
+      color: var(--secondary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-method a:hover {
+      color: var(--primary);
+    }
+
+    @media (min-width: 700px) {
+      .contact-methods {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .contact-method {
+        flex: 1;
+      }
+    }   
+  </style>
+</head>
+
+<body class="subpage contact-page">
+  <!-- Logo and Search -->
+  <div class="subpage-logo-container">
+    <a href="index.html" class="subpage-logo-link">
+      <span class="subpage-word art">ART</span>
+      <span class="subpage-word life">LIFE</span>
+    </a>
+  </div>
+
+  <div class="subpage-search-container">
+    <button class="subpage-search-icon" id="search-toggle" aria-label="Open search">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M10 2a8 8 0 105.293 14.293l5.707 5.707 1.414-1.414-5.707-5.707A8 8 0 0010 2zm0 2a6 6 0 110 12A6 6 0 0110 4z"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Search Overlay -->
+  <div id="search-overlay" class="search-overlay">
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="Search artworks, programs...">
+      <button class="close-search" aria-label="Close search">&times;</button>
+    </div>
+  </div>
+
+ <aside class="sidebar">
+    <nav class="sidebar-nav">
+    <a href="about.html" class="nav-link active">About</a>
+      
+    <!-- Vertical Section Menu -->
+    <div class="section-menu">
+      <a href="about.html" class="section-menu-item" data-target="GTKU">
+        <span>Get to know us</span>
+      </a>
+      <a href="OurJourney.html" class="section-menu-item" data-target="history">
+        <span>Our Journey</span>
+      </a>
+      <a href="People.html" class="section-menu-item" data-target="people">
+        <span>People</span>
+      </a> 
+      <a href="contact.html" class="section-menu-item active" data-target="contact">
+        <span>Contact Us</span>
+      </a> 
+      <a href="faq.html" class="section-menu-item" data-target="faq-page">
+        <span>FAQ</span>
+      </a>
+    </div>
+      
+    <a href="what_we_do.html" class="nav-link">What we do</a>
+    <a href="support.html" class="nav-link">Community</a>
+    <a href="projects.html" class="nav-link">Projects</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <article>
+      <header>
+        <h1 class="about-heading">Contact Us</h1>
+      </header>
+
+      <section class="contact-section">
+        <p class="contact-intro">
+          Whether you're an artist, supporter, or partner — we'd love to hear from you. Reach out via email, give us a call, or connect on social media.
+        </p>
+
+        <div class="contact-methods">
+          <div class="contact-method">
+            <h3>Email</h3>
+            <p>Send us your thoughts, questions or proposals via email.</p>
+            <p><a href="mailto:info@artlifegroup.or.ke">info@artlifegroup.or.ke</a></p>
+          </div>
+
+          <div class="contact-method">
+            <h3>Phone</h3>
+            <p>Prefer to chat? Reach us directly during working hours.</p>
+            <p><a href="tel:+254788632283">+254 788 632 283</a></p>
+          </div>
+
+          <div class="contact-method">
+            <h3>Social Media</h3>
+            <p>Follow us or drop a DM on any of these platforms:</p>
+            <p>
+              <a href="https://www.instagram.com/art_life_group_/" target="_blank">Instagram</a> |
+              <a href="https://x.com/Art_Life_Group" target="_blank">X</a> | 
+              <a href="https://ke.linkedin.com/company/art-life-group" target="_blank">LinkedIn</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-section">
+        <p class="contact-intro">
+          Alternatively, you can visit us at our physical location:
+        </p>
+        <div class="contact-method">
+          <h3>Our Offices</h3>
+          <address>
+            <p>View Park Towers</p>
+            <p>Monrovia St</p>
+            <p>P.O BOX 52276, 00100 Nairobi, Kenya</p>
+          </address>
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer reveal">
+    <div class="footer-content">
+      <div class="footer-group">
+        <div class="footer-section">
+          <h3>Connect With Us</h3>
+          <div class="social-links">
+            <a href="https://www.instagram.com/art_life_group_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+            <a href="https://x.com/Art_Life_Group" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+              <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1227" width="32" height="32" fill="white">
+                <path d="M714.299 536.809 1181.38 0H1073.9L664.906 470.61 337.154 0H0L489.932 710.652 0 1227h107.477l433.206-488.444L862.846 1227H1200L714.299 536.809Zm-152.289 171.713-50.266-73.648L163.503 90.75h127.736l293.225 429.721 50.266 73.648 372.225 545.813H879.954L562.01 708.522Z"/>
+              </svg>
+            </a>
+            <a href="https://ke.linkedin.com/company/art-life-group" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V24h-4V8zm7.5 0h3.6v2.2h.1c.5-.9 1.8-2.2 3.7-2.2 4 0 4.7 2.6 4.7 6v9.9h-4v-8.7c0-2.1-.1-4.7-2.9-4.7-2.9 0-3.4 2.3-3.4 4.6v8.8h-4V8z"/>
+              </svg>
+            </a>
+          </div>
+        </div>    
+
+        <div class="footer-section">
+          <h3>Legal</h3>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p>&copy; <span id="current-year"></span> ArtLife. All rights reserved.</p>
+      </div>
+
+      <div class="self-promo">
+        <p>
+          If this site concept, design & development resonates with you, <a href="mailto:kibiwott.studio@proton.me">drop me a line</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Search functionality
+    const searchToggle = document.getElementById('search-toggle');
+    const searchOverlay = document.getElementById('search-overlay');
+    const closeSearch = document.querySelector('.close-search');
+
+    searchToggle.addEventListener('click', () => {
+      searchOverlay.classList.add('active');
+      document.getElementById('search-input').focus();
+    });
+
+    closeSearch.addEventListener('click', () => {
+      searchOverlay.classList.remove('active');
+    });
+
+    searchOverlay.addEventListener('click', (e) => {
+      if (e.target === searchOverlay) {
+        searchOverlay.classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>

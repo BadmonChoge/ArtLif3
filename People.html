@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>People | ArtLife</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+   
+    .subpage-logo-container { grid-area: logo; }
+    .subpage-search-container { grid-area: search; }
+    .sidebar { grid-area: sidebar; }
+    .main-content { grid-area: main; }
+    .site-footer { grid-area: footer; }
+    
+    /* ===== Carousel Styles ===== */
+    .people-carousel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      padding: 3rem 1rem;
+      color: white;
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .person-container {
+      width: 80%;
+      margin: 0 auto;
+      min-height: 450px;
+      position: relative;
+    }
+    
+    .person {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      text-align: center;
+      padding: 1rem;
+    }
+    
+    .person.active {
+      opacity: 1;
+      position: relative;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .person img {
+      width: 100%;
+      max-width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin: 0 auto 1.5rem;
+      display: block;
+      border: 4px solid var(--primary);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    
+    .nav-arrow {
+      font-size: 3rem;
+      font-weight: bold;
+      color: var(--primary);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0 1rem;
+      z-index: 10;
+      position: relative;
+    }
+
+    .nav-arrow:focus {
+      outline: none;
+    }
+    
+    .nav-arrow:hover {
+      transform: scale(1.2);
+      color: var(--secondary);
+    }
+    
+    .credentials {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.9);
+      margin: 1.5rem auto;
+      line-height: 1.7;
+      max-width: 900px;
+      padding: 0 1rem;
+    }
+    
+    .person h3 {
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    
+    /* ===== Team Section Styles ===== */
+    .team-section {
+      margin: 4rem auto;
+      color: white;
+      max-width: 1200px;
+      padding: 0 2rem;
+    }
+    
+    .team-section h2 {
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 2rem;
+      color: var(--primary);
+    }
+    
+    .team-board, .team-departments, .advisory-board {
+      margin-bottom: 4rem;
+      background: rgba(255,255,255,0.05);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .team-board h3, .team-departments h3, .advisory-board h3 {
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--primary);
+    }
+    
+    .team-grid, .advisory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .team-member, .advisor {
+      background: rgba(255,255,255,0.08);
+      padding: 1.8rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      border-left: 4px solid var(--primary);
+    }
+    
+    .team-member:hover, .advisor:hover {
+      transform: translateY(-8px);
+      background: rgba(255,255,255,0.15);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+    
+    .team-member h4, .advisor h4 {
+      color: var(--secondary-dark, #2F8F61);
+      margin-bottom: 0.8rem;
+      font-size: 1.2rem;
+    }
+    
+    .team-member p, .advisor p {
+      margin: 0;
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+    
+    .team-member span, .advisor span {
+      font-size: 0.95rem;
+      opacity: 0.9;
+      display: block;
+      margin-top: 0.5rem;
+      color: rgba(255,255,255,0.7);
+    }
+    
+    .department-list {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 2rem;
+    }
+    
+    .department-list li {
+      padding: 1.2rem;
+      margin-bottom: 1rem;
+      background: rgba(255,255,255,0.05);
+      border-left: 4px solid var(--primary);
+      transition: all 0.3s ease;
+      border-radius: 6px;
+    }
+    
+    .department-list li:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateX(8px);
+      color: var(--secondary-dark, #2F8F61);
+    }
+    
+    /* ===== Responsive Styles ===== */
+    @media (max-width: 1024px) {
+      .subpage.about-page {
+        grid-template-areas:
+          "logo search"
+          "main main"
+          "footer footer";
+        grid-template-columns: 1fr;
+      }
+      
+      .sidebar {
+        display: none;
+      }
+      
+      .person-container {
+        width: 90%;
+        min-height: 400px;
+      }
+      
+      .credentials {
+        max-width: 90%;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .people-carousel {
+        flex-direction: column;
+        padding: 2rem 1rem;
+      }
+      
+      .nav-arrow {
+        font-size: 2.5rem;
+        padding: 1rem;
+      }
+      
+      .team-grid, .advisory-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .person img {
+        max-width: 200px;
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+
+<body class="subpage about-page">
+  <!-- Logo and Search -->
+  <div class="subpage-logo-container">
+    <a href="index.html" class="subpage-logo-link">
+      <span class="subpage-word art">ART</span>
+      <span class="subpage-word life">LIFE</span>
+    </a>
+  </div>
+  
+  <div class="subpage-search-container">
+    <button class="subpage-search-icon" id="search-toggle" aria-label="Open search">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M10 2a8 8 0 105.293 14.293l5.707 5.707 1.414-1.414-5.707-5.707A8 8 0 0010 2zm0 2a6 6 0 110 12A6 6 0 0110 4z"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Search Overlay -->
+  <div id="search-overlay" class="search-overlay">
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="Search artworks, programs...">
+      <button class="close-search" aria-label="Close search">&times;</button>
+    </div>
+  </div>
+
+ <aside class="sidebar">
+    <nav class="sidebar-nav">
+    <a href="about.html" class="nav-link active">About</a>
+      
+    <!-- Vertical Section Menu -->
+
+    <div class="section-menu">
+      <a href="about.html" class="section-menu-item" data-target="GTKU">
+        <span>Get to know us</span>
+      </a>
+      <a href="OurJourney.html" class="section-menu-item" data-target="history">
+        <span>Our Journey</span>
+      </a>
+      <a href="People.html" class="section-menu-item active" data-target="people">
+        <span>People</span>
+      </a> 
+      <a href="contact.html" class="section-menu-item" data-target="contact">
+        <span>Contact Us</span>
+      </a> 
+      <a href="faq.html" class="section-menu-item" data-target="faq-page">
+        <span>FAQ</span>
+      </a>
+    </div>
+      
+    <a href="what_we_do.html" class="nav-link">What we do</a>
+    <a href="support.html" class="nav-link">Community</a>
+    <a href="projects.html" class="nav-link">Projects</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <article>
+      <h1 class="about-heading">People</h1>
+
+      <!-- Leadership Carousel -->
+      <section id="people" class="content-section">
+        <div class="about-subheading">
+          <h2 class>Leadership Team</h2>
+        </div>
+        <div class="people-carousel">
+          <button class="nav-arrow left" aria-label="Previous person">&#8592;</button>
+
+          <div class="person-container">
+            <div class="person active">
+              <img src="https://res.cloudinary.com/dfiterxi7/image/upload/v1753707583/Isaac_Oprong_oo7qwu.jpg" alt="Isaac Oprong" />
+              <h3>Isaac Oprong - Founder & CEO</h3>
+              <p class="credentials">A pro-active visionary, team-player, and social entrepreneur driven by a strong conviction for "never say never." Dedicated to growing artistic value, impact, and opportunities for vulnerable community art-makers. A nurturer of global thinking in local arts development with passions for writing, adventure travel, fitness, and global trends.</p>
+            </div>
+            
+            <div class="person">
+              <img src="https://res.cloudinary.com/dfiterxi7/image/upload/v1753707585/Daniel_Maina_opzwj5.png" alt="Daniel Maina" />
+              <h3>Daniel Maina - Head of Finance & Logistics</h3>
+              <p class="credentials">A solutions-oriented professional with exceptional operational foresight and strategic planning abilities. Tech-savvy innovator with an aptitude for calculated risk-taking and implementing new ideas. Enjoys music, reading, and staying current with global technology trends.</p>
+            </div>
+            
+            <div class="person">
+              <img src="https://res.cloudinary.com/dfiterxi7/image/upload/v1753707584/Derrick_Ibalai_geozzv.jpg" alt="Derrick Ibalai" />
+              <h3>Derrick Ibalai - Lead for Events & Arts Development</h3>
+              <p class="credentials">Visual and landscape artist with a passion for innovation, experiential learning, and building impactful networks. A hands-on professional committed to continuous improvement who enjoys working across multiple artistic disciplines including poetry, film, and musicals.</p>
+            </div>
+            
+            <div class="person">
+              <img src="https://res.cloudinary.com/dfiterxi7/image/upload/v1753707591/Nelson_Njogu_rvbtbm.png" alt="Nelson Njogu" />
+              <h3>Nelson Njogu - Community Outreach Lead</h3>
+              <p class="credentials">Lyrical artist and poet exploring new meanings and expressions. An artivist advocating for the transformative power of arts in communities, with a focus on civic engagement and social justice. Passionate about creative content, music, and live performances.</p>
+            </div>
+            
+            <div class="person">
+              <img src="https://res.cloudinary.com/dfiterxi7/image/upload/v1753707584/Tess_Wambui_anbusy.png" alt="Tess Wambui" />
+              <h3>Tess Wambui - Women, Youth & Climate Programs</h3>
+              <p class="credentials">Cultural anthropologist and artivist promoting arts as a tool for climate action and women's empowerment. Focuses on environmental education and challenging harmful cultural practices. Enjoys nature, reading, and analyzing media trends.</p>
+            </div>
+          </div>
+
+          <button class="nav-arrow right" aria-label="Next person">&#8594;</button>
+        </div>
+      </section>
+
+      <!-- Organizational Structure -->
+      <section id="team" class="content-section">
+        <div class="about-subheading">
+         <h2>Our Organizational Structure</h2>
+        </div>
+        <div class="sub-about-subheading"> 
+        <p>ArtLife is supported by a diverse team of professionals and advisors who bring specialized expertise to our mission.</p>
+        </div>
+  
+        <div class="team-section">
+          <!-- Executive Board -->
+          <div class="team-board">
+            <h3>Executive Leadership</h3>
+            <div class="sub-about-subheading"> 
+            <p>Our executive board provides strategic direction and oversight with expertise across multiple disciplines:</p>
+            </div>
+            
+            <div class="team-grid">
+              <div class="team-member">
+                <h4>Chairman/President</h4>
+                <p>Abraham Ekajulo<br><span>Governance & International Relations Specialist</span></p>
+              </div>
+              
+              <div class="team-member">
+                <h4>Executive Director</h4>
+                <p>Isaac C. O Oprong<br><span>Founder & Artistic Director</span></p>
+              </div>
+              
+              <div class="team-member">
+                <h4>Board Treasurer</h4>
+                <p>Dan L. Maina<br><span>IT & Project Management Expert</span></p>
+              </div>
+              
+              <div class="team-member">
+                <h4>Finance Specialist</h4>
+                <p>Gladwel M. Malema<br><span>Financial Administration</span></p>
+              </div>
+              
+              <div class="team-member">
+                <h4>Creative Director</h4>
+                <p>Devaine Wandera<br><span>Film Production & Scriptwriting</span></p>
+              </div>
+              
+              <div class="team-member">
+                <h4>Environmental Advisor</h4>
+                <p>Dr. Cynthia Amai<br><span>Climate Change Expert</span></p>
+              </div>
+              
+              <div class="team-member">
+                <h4>Operations Director</h4>
+                <p>Geoffrey O. Osiya<br><span>Logistics & Supply Chain</span></p>
+              </div>
+              
+              <div class="team-member">
+                <h4>Cultural Advisor</h4>
+                <p>Prof. Tom Olali<br><span>Linguistics & Swahili Culture</span></p>
+              </div>
+              
+              <div class="team-member">
+                <h4>Media Advisor</h4>
+                <p>Fred Kioko Musau<br><span>Publishing & Entrepreneurship</span></p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Departments -->
+          <div class="team-departments">
+            <h3>Key Departments</h3>
+            <div class="sub-about-subheading"> 
+            <p>Our organizational structure supports comprehensive arts programming through specialized teams:</p>
+            </div>
+            <ul class="department-list">
+              <li><strong>Executive Management</strong> - Administration, Finance, Recruitment, and Support Services</li>
+              <li><strong>Festivals & Events</strong> - Planning, Marketing, and Program Management</li>
+              <li><strong>Arts Development</strong> - Creative Programs and Initiatives</li>
+              <li><strong>Development</strong> - Fundraising and Community Relations</li>
+              <li><strong>Membership Services</strong> - Government Relations and Protocol</li>
+            </ul>
+          </div>
+          
+          <!-- Advisory Board -->
+          <div class="advisory-board">
+            <h3>Advisory Council</h3>
+            <p>Our advisors provide specialized guidance to enhance our programs:</p>
+            <div class="advisory-grid">
+              <div class="advisor">
+                <h4>Chairman</h4>
+                <p>John A. Orindi<br><span>University of Nairobi Corporate Affairs</span></p>
+              </div>
+              
+              <div class="advisor">
+                <h4>Arts Education</h4>
+                <p>Dr. Fred Atoh<br><span>Music Program Director</span></p>
+              </div>
+              
+              <div class="advisor">
+                <h4>Creative Industries</h4>
+                <p>Janet Amke<br><span>Arts Curator & Entrepreneur</span></p>
+              </div>
+              
+              <div class="advisor">
+                <h4>Music Industry</h4>
+                <p>John Katana<br><span>Music Copyright Society</span></p>
+              </div>
+              
+              <div class="advisor">
+                <h4>Creative Content</h4>
+                <p>Collins Majale "Collo"<br><span>Musician & Writer</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer reveal">
+    <div class="footer-content">
+      <div class="footer-group">
+        <div class="footer-section">
+          <h3>Connect With Us</h3>
+          <div class="social-links">
+            <a href="https://www.instagram.com/art_life_group_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+            <a href="https://x.com/Art_Life_Group" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+              <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1227" width="32" height="32" fill="white">
+                <path d="M714.299 536.809 1181.38 0H1073.9L664.906 470.61 337.154 0H0L489.932 710.652 0 1227h107.477l433.206-488.444L862.846 1227H1200L714.299 536.809Zm-152.289 171.713-50.266-73.648L163.503 90.75h127.736l293.225 429.721 50.266 73.648 372.225 545.813H879.954L562.01 708.522Z"/>
+              </svg>
+            </a>
+            <a href="https://ke.linkedin.com/company/art-life-group" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V24h-4V8zm7.5 0h3.6v2.2h.1c.5-.9 1.8-2.2 3.7-2.2 4 0 4.7 2.6 4.7 6v9.9h-4v-8.7c0-2.1-.1-4.7-2.9-4.7-2.9 0-3.4 2.3-3.4 4.6v8.8h-4V8z"/>
+              </svg>
+            </a>
+          </div>
+        </div>    
+
+        <div class="footer-section">
+          <h3>Legal</h3>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p>&copy; <span id="current-year"></span> ArtLife. All rights reserved.</p>
+      </div>
+
+      <div class="self-promo">
+        <p>
+          If this site concept, design & development resonates with you, <a href="mailto:kibiwott.studio@proton.me">drop me a line</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    
+    // Search functionality
+    const searchToggle = document.getElementById('search-toggle');
+    const searchOverlay = document.getElementById('search-overlay');
+    const closeSearch = document.querySelector('.close-search');
+    
+    searchToggle.addEventListener('click', () => {
+      searchOverlay.classList.add('active');
+      document.getElementById('search-input').focus();
+    });
+    
+    closeSearch.addEventListener('click', () => {
+      searchOverlay.classList.remove('active');
+    });
+    
+    // Close when clicking outside search box
+    searchOverlay.addEventListener('click', (e) => {
+      if (e.target === searchOverlay) {
+        searchOverlay.classList.remove('active');
+      }
+    });
+
+    // People carousel functionality
+    document.addEventListener("DOMContentLoaded", function() {
+      const people = document.querySelectorAll('.person');
+      const leftArrow = document.querySelector('.nav-arrow.left');
+      const rightArrow = document.querySelector('.nav-arrow.right');
+      let currentIndex = 0;
+      const totalPeople = people.length;
+
+      // Initialize carousel
+      function showPerson(index) {
+        // Hide all people
+        people.forEach(person => {
+          person.classList.remove('active');
+        });
+        
+        // Show the selected person
+        people[index].classList.add('active');
+      }
+
+      // Show next person
+      function nextPerson() {
+        currentIndex = (currentIndex + 1) % totalPeople;
+        showPerson(currentIndex);
+      }
+
+      // Show previous person
+      function prevPerson() {
+        currentIndex = (currentIndex - 1 + totalPeople) % totalPeople;
+        showPerson(currentIndex);
+      }
+
+      // Event listeners for arrows
+      rightArrow.addEventListener('click', nextPerson);
+      leftArrow.addEventListener('click', prevPerson);
+
+      // Keyboard navigation
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight') {
+          nextPerson();
+        } else if (e.key === 'ArrowLeft') {
+          prevPerson();
+        }
+      });
+
+      // Initialize the first person
+      showPerson(currentIndex);
+      
+      // Auto-advance every 8 seconds
+      setInterval(nextPerson, 8000);
+    });
+  </script>
+</body>
+</html>

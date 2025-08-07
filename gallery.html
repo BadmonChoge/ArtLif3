@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery | ArtLife</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #DAA520;
+      --dark: #1C1C1E;
+      --light: #FFFFFF;
+    }
+    body {
+      margin: 0;
+      background: var(--dark);
+      color: var(--light);
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+    h1 {
+      margin-bottom: 2rem;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 2rem;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 1200px;
+    }
+    .tile {
+      perspective: 1000px;
+      cursor: pointer;
+    }
+    .tile-inner {
+      position: relative;
+      width: 100%;
+      padding-top: 100%; /* makes square */
+      transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+    }
+    .tile:hover .tile-inner {
+      transform: rotateY(180deg) scale(1.02);
+    }
+    .tile-face {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    }
+    .tile-front img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .tile-back {
+      background: var(--primary);
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1rem;
+      transform: rotateY(180deg);
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+
+<h1>ArtLife Gallery</h1>
+
+<div class="gallery">
+  <div class="tile">
+    <div class="tile-inner">
+      <div class="tile-face tile-front">
+        <img src="https://picsum.photos/id/1015/400/400" alt="Artwork 1">
+      </div>
+      <div class="tile-face tile-back">
+        Urban Perspectives
+      </div>
+    </div>
+  </div>
+
+  <div class="tile">
+    <div class="tile-inner">
+      <div class="tile-face tile-front">
+        <img src="https://picsum.photos/id/1025/400/400" alt="Artwork 2">
+      </div>
+      <div class="tile-face tile-back">
+        Abstract Realms
+      </div>
+    </div>
+  </div>
+
+  <div class="tile">
+    <div class="tile-inner">
+      <div class="tile-face tile-front">
+        <img src="https://picsum.photos/id/1035/400/400" alt="Artwork 3">
+      </div>
+      <div class="tile-face tile-back">
+        Community Mural
+      </div>
+    </div>
+  </div>
+
+  <div class="tile">
+    <div class="tile-inner">
+      <div class="tile-face tile-front">
+        <img src="https://picsum.photos/id/1045/400/400" alt="Artwork 4">
+      </div>
+      <div class="tile-face tile-back">
+        Youth Workshop
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

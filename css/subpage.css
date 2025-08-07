@@ -1,0 +1,328 @@
+:root {
+  /* Color Palette */
+  --primary: #DAA520;
+  --primary-light: #FFC72C;
+  --secondary: #44B78B;
+  --dark: #1C1C1E;
+  --darker: #2A2A2D;
+  --light: #FFFFFF;
+  --text-muted: rgba(255, 255, 255, 0.6);
+
+  /* Typography */
+  --font-main: 'Inter', sans-serif;
+  --font-accent: 'Courier New', monospace;
+  
+  /* Spacing System */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+
+  /* Effects */
+  --transition-fast: 0.2s ease;
+  --border-radius: 4px;
+}
+
+/* Core Layout */
+body.subpage-body {
+  font-family: var(--font-main);
+  color: var(--light);
+  background: linear-gradient(135deg, var(--dark), var(--darker));
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main Content Wrapper */
+.content-wrapper {
+  display: flex;
+  flex: 1;
+}
+
+/* Enhanced Sidebar */
+.sidebar {
+  width: 320px;
+  background-color: var(--darker);
+  padding: var(--spacing-lg);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(218, 165, 32, 0.15);
+}
+
+/* Logo Styles */
+.subpage-logo-container {
+  padding-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  position: relative;
+}
+
+.subpage-logo-container::after {
+  content: '';
+  position: absolute;
+  left: 0.8rem;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--primary);
+  width: calc(100% - 1.6rem);
+}
+
+.subpage-logo-link {
+  display: flex;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.subpage-word {
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  line-height: 0.9;
+}
+
+.subpage-word.art {
+  color: var(--primary);
+}
+
+.subpage-word.life {
+  color: var(--light);
+}
+
+/* Navigation */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.nav-link {
+  color: var(--text-muted);
+  font-family: var(--font-accent);
+  font-size: 1.3rem;
+  text-decoration: none;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  position: relative;
+  transition: all var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: var(--secondary);
+}
+
+.nav-link.active {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+/* Section Menu */
+.section-menu {
+  display: none;
+  margin: var(--spacing-sm) 0;
+  padding-left: var(--spacing-lg); /* Increased from md to lg for more indentation */
+  border-left: 1px solid rgba(218, 165, 32, 0.2); /* Optional: adds a subtle vertical line */
+}
+
+.about-page .section-menu {
+  display: block;
+}
+
+.section-menu-item {
+  padding: var(--spacing-xs) 0;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: var(--font-accent);
+  font-size: 1.1rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+  margin-left: 10px;
+  transition: color var(--transition-fast); /* Smooth color transition */
+}
+
+.section-menu-item span {
+  position: relative;
+  display: inline-block;
+}
+
+.section-menu-item .underline {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary);
+  transition: width 0.3s ease, opacity 0.3s ease;
+  opacity: 0.7; /* Slightly transparent by default */
+}
+
+.section-menu-item:hover .underline {
+  width: 100%;
+  opacity: 1; /* Full opacity on hover */
+}
+
+.section-menu-item.active {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.section-menu-item.active .underline {
+  width: 100%;
+  opacity: 1;
+  background-color: var(--primary-light); /* Slightly different color for active state */
+}
+
+/* Search Overlay */
+.search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.search-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.search-box {
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.5rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--primary);
+  color: var(--light);
+  outline: none;
+}
+
+.close-search {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  margin-left: 320px;
+  padding: var(--spacing-xl);
+  max-width: 1200px;
+}
+
+.content-section {
+  padding: var(--spacing-lg) 0;
+  scroll-margin-top: 100px;
+}
+
+/* Footer */
+.site-footer {
+  margin-top: auto;
+  padding: var(--spacing-lg) 0;
+  background-color: var(--darker);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-md) var(--spacing-xl);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.footer-section {
+  min-width: 200px;
+  flex: 1 1 200px;
+  margin-bottom: var(--spacing-md);
+}
+
+.footer-section h3 {
+  color: var(--primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer-section a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-section a:hover {
+  color: var(--light);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .sidebar {
+    width: 280px;
+  }
+  .main-content {
+    margin-left: 280px;
+    padding: var(--spacing-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    position: static;
+    padding: var(--spacing-md);
+    border-right: none;
+    border-bottom: 1px solid var(--primary);
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: var(--spacing-md);
+  }
+
+  .section-menu {
+    padding-left: var(--spacing-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .subpage-word {
+    font-size: 2rem;
+  }
+  
+  .footer-section {
+    min-width: 100%;
+  }
+}

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="description" content="ArtLife - Supporting emerging artists in Nairobi">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Home | Artlife</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Courier+New&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Search Overlay -->
+  <div id="search-overlay" class="search-overlay" aria-hidden="true">
+    <div class="search-box">
+      <form role="search">
+        <label for="search-input" class="sr-only">Search ArtLife</label>
+        <input type="text" id="search-input" placeholder="Search..." />
+        <button type="button" class="close-search" aria-label="Close search">✕</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Header Section -->
+  <header class="header">
+    <div class="hero" id="hero">
+      <div class="title-container">
+        <a href="index.html" class="hero-link" aria-label="ArtLife Home">
+          <span class="word art">Art</span>
+          <span class="word life">Life</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Hamburger Menu -->
+    <header class="mobile-header">
+      <div class="logo">ArtLife</div>
+      <div class="hamburger" id="hamburger">&#9776;</div>
+    </header>
+
+    <nav class="mobile-nav" id="mobile-nav">
+      <div class="close-btn" id="close-btn">&times;</div>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="what_we_do.html">What We Do</a>
+      <a href="support.html">Community</a>
+      <a href="projects.html">Projects</a>
+    </nav>
+
+    <!-- Navigation -->
+    <nav class="menu-bar" aria-label="Main navigation">
+      <ul class="menu-row">
+        <li>
+          <a href="about.html" 
+            data-text="Get to know us | People | Our&nbsp;Journey | FAQ | Contact&nbsp;Us">
+            About
+          </a>
+        </li>
+        <li>
+          <a href="what_we_do.html" 
+            data-text="Defining Us | Research&nbsp;&&nbsp;Advocacy">
+            What We Do
+          </a>
+        </li>
+        <li>
+          <a href="support.html" 
+            data-text="Participation | Support&nbsp;Us">
+            Community
+          </a>
+        </li>
+        <li>
+          <a href="projects.html" 
+            data-text="Legacy | Live | In Development">
+            Projects
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="search-icon-container" id="search-icon-container">
+      <button class="search-icon" id="search-icon" aria-label="Open search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M10 2a8 8 0 105.293 14.293l5.707 5.707 1.414-1.414-5.707-5.707A8 8 0 0010 2zm0 2a6 6 0 110 12A6 6 0 0110 4z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hover Text -->
+  <div class="hover-text fade-in" id="hover-text" aria-live="polite"></div>
+
+  <!-- Skyline -->
+  <div class="skyline-container">
+    <img src="https://res.cloudinary.com/dfiterxi7/image/upload/v1753987548/svgviewer-output_fkburr.svg" 
+         alt="Decorative Nairobi skyline illustration" 
+         class="skyline-svg"
+         loading="lazy">
+  </div>
+
+  <!-- Main Content -->
+  <div class="content-wrapper">
+    <!-- Scrollable Content -->
+    <main class="scroll-content">
+      <div class="content-container">
+        <section class="content-section reveal">
+          <h2>Current Exhibitions</h2>
+          <div class="exhibition-grid">
+            <article class="exhibition-card">
+              <h3>Urban Perspectives</h3>
+              <p>October 15 - November 20</p>
+              <a href="#" class="btn" aria-label="Learn more about Urban Perspectives exhibition">Learn More</a>
+            </article>
+            <article class="exhibition-card">
+              <h3>Abstract Realms</h3>
+              <p>December 1 - January 15</p>
+              <a href="#" class="btn" aria-label="Learn more about Abstract Realms exhibition">Learn More</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="newsletter reveal">
+          <h2>Join Our Newsletter</h2>
+          <form class="newsletter-form">
+            <label for="email" class="sr-only">Email Address</label>
+            <input type="email" id="email" placeholder="Your email address" required>
+            <button type="submit" class="btn">Subscribe</button>
+          </form>
+        </section>     
+
+
+        <div class="ticker-container" id="partnerTicker">
+          <div class="partners-label">PARTNERS</div>
+          <div class="ticker-wrapper">
+            <div class="ticker-track" id="tickerTrack">
+              <!-- Duplicate logos twice for smooth looping -->
+              <div class="ticker-item"><img src="https://res.cloudinary.com/dfiterxi7/image/upload/v1754404595/Cultural_Centre_gyf0ws.jpg" alt="Logo 1"></div>
+              <div class="ticker-item"><img src="https://res.cloudinary.com/dfiterxi7/image/upload/v1754404612/UoN_bru57i.jpg" alt="Logo 2"></div>
+              <div class="ticker-item"><img src="https://res.cloudinary.com/dfiterxi7/image/upload/v1754404595/Sarakasi_feh1zj.png" alt="Logo 3"></div>
+              <div class="ticker-item"><img src="https://res.cloudinary.com/dfiterxi7/image/upload/v1754404589/KCCA_Artiste_nsxkfb.jpg" alt="Logo 4"></div>
+              <div class="ticker-item"><img src="https://res.cloudinary.com/dfiterxi7/image/upload/v1754404589/KIUESA_yebzrf.png" alt="Logo 5"></div>
+              <div class="ticker-item"><img src="https://res.cloudinary.com/dfiterxi7/image/upload/v1754404589/Nairobi_City_County_pefrdo.jpg" alt="Logo 6"></div>
+              <div class="ticker-item"><img src="https://res.cloudinary.com/dfiterxi7/image/upload/v1754404589/Ministry_Youth_Affairs_khifrx.jpg" alt="Logo 7"></div>
+
+              <div class="ticker-item"><img src="https://res.cloudinary.com/dfiterxi7/image/upload/v1754404595/Cultural_Centre_gyf0ws.jpg" alt="Logo 1"></div>
+              <div class="ticker-item"><img src="https://res.cloudinary.com/dfiterxi7/image/upload/v1754404612/UoN_bru57i.jpg" alt="Logo 2"></div>
+              <div class="ticker-item"><img src="https://res.cloudinary.com/dfiterxi7/image/upload/v1754404595/Sarakasi_feh1zj.png" alt="Logo 3"></div>
+              <div class="ticker-item"><img src="https://res.cloudinary.com/dfiterxi7/image/upload/v1754404589/KCCA_Artiste_nsxkfb.jpg" alt="Logo 4"></div>
+              <div class="ticker-item"><img src="https://res.cloudinary.com/dfiterxi7/image/upload/v1754404589/KIUESA_yebzrf.png" alt="Logo 5"></div>
+              <div class="ticker-item"><img src="https://res.cloudinary.com/dfiterxi7/image/upload/v1754404589/Nairobi_City_County_pefrdo.jpg" alt="Logo 6"></div>
+              <div class="ticker-item"><img src="https://res.cloudinary.com/dfiterxi7/image/upload/v1754404589/Ministry_Youth_Affairs_khifrx.jpg" alt="Logo 7"></div>
+
+              <div class="ticker-item"><img src="https://res.cloudinary.com/dfiterxi7/image/upload/v1754404595/Cultural_Centre_gyf0ws.jpg" alt="Logo 1"></div>
+              <div class="ticker-item"><img src="https://res.cloudinary.com/dfiterxi7/image/upload/v1754404612/UoN_bru57i.jpg" alt="Logo 2"></div>
+              <div class="ticker-item"><img src="https://res.cloudinary.com/dfiterxi7/image/upload/v1754404595/Sarakasi_feh1zj.png" alt="Logo 3"></div>
+              <div class="ticker-item"><img src="https://res.cloudinary.com/dfiterxi7/image/upload/v1754404589/KCCA_Artiste_nsxkfb.jpg" alt="Logo 4"></div>
+              <div class="ticker-item"><img src="https://res.cloudinary.com/dfiterxi7/image/upload/v1754404589/KIUESA_yebzrf.png" alt="Logo 5"></div>
+              <div class="ticker-item"><img src="https://res.cloudinary.com/dfiterxi7/image/upload/v1754404589/Nairobi_City_County_pefrdo.jpg" alt="Logo 6"></div>
+              <div class="ticker-item"><img src="https://res.cloudinary.com/dfiterxi7/image/upload/v1754404589/Ministry_Youth_Affairs_khifrx.jpg" alt="Logo 7"></div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer reveal">
+    <div class="footer-content">
+      <div class="footer-group">
+        <div class="footer-section">
+          <h3>Connect With Us</h3>
+          <div class="social-links">
+            <a href="https://www.instagram.com/art_life_group_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+            <a href="https://x.com/Art_Life_Group" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+              <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1227" width="32" height="32" fill="white">
+                <path d="M714.299 536.809 1181.38 0H1073.9L664.906 470.61 337.154 0H0L489.932 710.652 0 1227h107.477l433.206-488.444L862.846 1227H1200L714.299 536.809Zm-152.289 171.713-50.266-73.648L163.503 90.75h127.736l293.225 429.721 50.266 73.648 372.225 545.813H879.954L562.01 708.522Z"/>
+              </svg>
+            </a>
+            <a href="https://ke.linkedin.com/company/art-life-group" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V24h-4V8zm7.5 0h3.6v2.2h.1c.5-.9 1.8-2.2 3.7-2.2 4 0 4.7 2.6 4.7 6v9.9h-4v-8.7c0-2.1-.1-4.7-2.9-4.7-2.9 0-3.4 2.3-3.4 4.6v8.8h-4V8z"/>
+              </svg>
+            </a>
+          </div>
+        </div>    
+
+        <div class="footer-section">
+          <h3>Legal</h3>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p>&copy; <span id="current-year"></span> ArtLife. All rights reserved.</p>
+      </div>
+
+      <div class="self-promo">
+        <p>
+          If this site concept, design & development resonates with you, <a href="mailto:kibiwott.studio@proton.me">drop me a line</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/animations.js" defer></script>
+  <script src="js/navigation.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <div class="footer-buffer"></div>
+
+  <script>
+    document.getElementById('partnerTicker').addEventListener('click', function() {
+      // Replace with your actual partner page URL
+      window.open('ExistingPartners.html', '_blank');
+      
+      // Alternative: Uncomment to open in same tab
+      // window.location.href = 'partners.html';
+    });
+  </script>
+
+</body>
+</html>
